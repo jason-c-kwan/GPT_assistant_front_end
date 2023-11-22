@@ -1,0 +1,116 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Open Sans', sans-serif; /* Add your font styling here */
+}
+
+#chat-container {
+    flex-grow: 1; /* This will make the chat container grow to fill available space */
+    overflow-y: auto;
+}
+
+#chat-box {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column; /* Newest messages at the bottom */
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#input-area {
+    /* Ensure the input area does not grow and stays at the bottom */
+    flex-shrink: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.message {
+    max-width: 80%;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 15px;
+    position: relative; /* Add position relative here for :after positioning */
+}
+
+.user-message {
+    background-color: #DCF8C6;
+    align-self: flex-start; /* Align user messages to the left */
+    /* Position the tail on the left for user messages */
+    :after {
+        content: '';
+        position: absolute;
+        left: -10px; /* Adjust as needed */
+        top: 50%;
+        width: 0;
+        height: 0;
+        border: 10px solid transparent;
+        border-right-color: #DCF8C6; /* The color of the tail should match the bubble */
+        border-left: 0;
+        margin-top: -10px;
+        margin-left: 0;
+    }
+}
+
+.gpt-message {
+    background-color: #E5E5EA;
+    align-self: flex-end; /* Keep GPT messages aligned to the right */
+    /* Position the tail on the right for GPT messages */
+    :after {
+        content: '';
+        position: absolute;
+        right: -10px; /* Adjust as needed */
+        top: 50%;
+        width: 0;
+        height: 0;
+        border: 10px solid transparent;
+        border-left-color: #E5E5EA; /* The color of the tail should match the bubble */
+        border-right: 0;
+        margin-top: -10px;
+        margin-right: 0;
+    }
+}
+
+#user-input {
+    width: 80%;
+    padding: 10px;
+}
+
+button {
+    width: 18%;
+    padding: 10px;
+    background-color: blue;
+    color: white;
+    border: none;
+}
+
+pre {
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+/* Code block styles within a message */
+.message pre code {
+    display: block;
+    white-space: pre-wrap; /* Wrap text */
+    overflow-wrap: break-word;
+    background-color: #f5f5f5; /* Light grey background */
+    border: 1px solid #ccc; /* Add border to distinguish the code block */
+    border-radius: 5px;
+    padding: 5px;
+}
+
+/* Ensure all pre elements are within a single bounding box */
+.message pre {
+    background-color: #f5f5f5;
+    padding: 5px;
+    border-radius: 5px;
+}

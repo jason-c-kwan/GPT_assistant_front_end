@@ -1,0 +1,2 @@
+# .gitignore
+config.py # Includes OPENAI_API_KEY = 'your-api-key-here'
