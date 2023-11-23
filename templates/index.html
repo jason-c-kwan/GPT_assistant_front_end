@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Chat with GPT Assistant</title>
+    <title>Chat with {{ assistant_name }}</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet"
@@ -10,7 +10,7 @@
     <script>hljs.highlightAll();</script>
 </head>
 <body>
-    <h1>Welcome to the GPT Assistant</h1>
+    <h1>Welcome to the {{ assistant_name }}</h1>
     <div id="chat-container">
         <div id="chat-box">
             <!-- Messages will be displayed here -->
