@@ -4,11 +4,12 @@ A simple front-end website for the GPT API, largely written by GPT-4-turbo. To u
 
 ```
 OPENAI_API_KEY = 'your_openai_api_key'
+ASSISTANT_ID = 'assistant_id' # You can find this in your platform.openai.com
 ```
 
-...replacing `'your_openai_api_key`` with your API key, of course. 
+...replacing `'your_openai_api_key`` with your API key, of course, as well as the assistant_id.
 
-This current version just uses the standard GPT API. Subsequent versions will use the Assistant API to access an existing assistant made through [platform.openai.com](platform.openai.com).
+Allows access to an existing assistant made through [platform.openai.com](platform.openai.com).
 
 To create the environment you need:
 
