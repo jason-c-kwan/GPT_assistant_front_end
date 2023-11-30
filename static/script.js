@@ -75,20 +75,13 @@ function escapeHTML(str) {
 }
 
 function markdownToHTML(text) {
-    // Convert markdown code blocks to HTML preformatted code
-    text = text.replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>');
-    
-    // Convert markdown lists to HTML lists
-    text = text.replace(/^\d+\.\s(.+)/gm, '<li>$1</li>').replace(/(<li>[\s\S]*<\/li>)/gm, '<ol>$1</ol>');
+    // Use 'marked' to convert markdown to HTML
+    // Convert markdown to HTML using 'marked'
+    let unsafeHtml = marked.parse(text);
 
-    // ...add other markdown to HTML conversions as needed...
-    // Correctly wrap consecutive lines of code in one block
-    text = text.replace(/(```\n[\s\S]*?\n```)/g, function(match) {
-        match = match.replace(/```/g, ''); // Remove the code block ticks
-        return '<pre><code>' + match.trim() + '</code></pre>';
-    });
-
-    return text;
+    // Sanitize the HTML if it includes user-generated content
+    let safeHtml = DOMPurify.sanitize(unsafeHtml);
+    return marked.parse(safeHtml);
 }
 
 
